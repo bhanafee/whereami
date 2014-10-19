@@ -6,8 +6,8 @@ import akka.camel.{ CamelMessage, Oneway, Producer }
 import org.apache.camel.{ Exchange, Processor }
 import org.apache.camel.builder.RouteBuilder
 
-class Recorder extends Actor with ActorLogging {
-  val endpoint = context.actorOf(Props(classOf[RecorderEndpoint]), "recorderEndpoint")
+class Recorder(recording: String) extends Actor with ActorLogging {
+  val endpoint = context.actorOf(Endpoint.props(recording), "recorderEndpoint")
 
   import TrackerProtocol.{ Entry, Point }
 
@@ -24,13 +24,14 @@ class Recorder extends Actor with ActorLogging {
 
 }
 
-class RecorderEndpoint extends Actor with Producer {
-  def endpointUri = "direct:record"
+class Endpoint(val endpointUri: String) extends Actor with Producer
+object Endpoint {
+  def props(endpointUri: String): Props = Props(new Endpoint(endpointUri))
 }
 
-class RecordingRoutes extends RouteBuilder {
+class RecordingRoutes(recording: String) extends RouteBuilder {
   def configure {
-    from("direct:record").process(new Processor() {
+    from(recording).process(new Processor() {
       def process(exchange: Exchange) {
         // TODO: send this somewhere real
         println(exchange.getIn.getBody)

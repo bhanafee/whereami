@@ -20,14 +20,16 @@ object Main extends App {
 
   val connect = config.getString("gis.connect")
 
+  val recording = config.getString("recording.endpoint")
+
   implicit val system = ActorSystem("geotracker")
 
   val gis = system.actorOf(Props(classOf[PostGIS], connect), "gis")
-  val recorder = system.actorOf(Props[Recorder], "recorder")
+  val recorder = system.actorOf(Props(classOf[Recorder], recording), "recorder")
   val tracker = system.actorOf(Props(classOf[Tracker], recorder, gis, createFencer), "tracker")
   val api = system.actorOf(Props(classOf[RestInterface], gis, tracker, apiTimeout), "httpInterface")
   IO(Http) ! Http.Bind(listener = api, interface = host, port = port)
-  CamelExtension(system).context.addRoutes(new RecordingRoutes)
+  CamelExtension(system).context.addRoutes(new RecordingRoutes(recording))
 
 
   def createFencer = new Fencer {
