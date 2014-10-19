@@ -1,4 +1,4 @@
-package com.tracker
+package com.github.bhanafee.whereami
 
 object TrackerProtocol {
   import spray.json._

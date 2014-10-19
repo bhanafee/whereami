@@ -1,4 +1,4 @@
-package com.tracker
+package com.github.bhanafee.whereami
 
 import scala.concurrent.duration._
 

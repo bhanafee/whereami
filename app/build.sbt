@@ -5,7 +5,7 @@ name := "tracker"
 
 version := "0.1-SNAPSHOT"
 
-organization := "com.tracker"
+organization := "com.github.bhanafee.whereami"
 
 scalaVersion := "2.11.1"
 
@@ -34,7 +34,7 @@ libraryDependencies ++= {
 }
 
 // Assembly settings
-mainClass in Global := Some("com.tracker.Main")
+mainClass in Global := Some("com.github.bhanafee.whereami.Main")
 
 jarName in assembly := "tracker-server.jar"
 

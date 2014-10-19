@@ -1,4 +1,4 @@
-package com.tracker
+package com.github.bhanafee.whereami
 
 import scala.concurrent.duration._
 
@@ -10,7 +10,7 @@ import spray.can.Http
 
 import com.typesafe.config.ConfigFactory
 
-import com.tracker.gis._
+import com.github.bhanafee.whereami.gis._
 
 object Main extends App {
   val config = ConfigFactory.load()

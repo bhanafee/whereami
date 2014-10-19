@@ -1,1 +1,1 @@
-web: target/start com.tracker.Main
+web: target/start com.github.bhanafee.whereami.Main

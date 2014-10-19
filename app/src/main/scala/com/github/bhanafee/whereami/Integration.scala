@@ -1,4 +1,4 @@
-package com.tracker
+package com.github.bhanafee.whereami
 
 import akka.actor.{ Actor, ActorLogging, Props }
 import akka.camel.{ CamelMessage, Oneway, Producer }

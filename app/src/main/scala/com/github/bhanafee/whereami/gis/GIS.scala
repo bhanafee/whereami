@@ -1,8 +1,8 @@
-package com.tracker.gis
+package com.github.bhanafee.whereami.gis
 
 import akka.actor.Actor
 
-import com.tracker.TrackerProtocol
+import com.github.bhanafee.whereami.TrackerProtocol
 
 trait GIS extends Actor {
 

@@ -1,6 +1,6 @@
-package com.tracker.gis
+package com.github.bhanafee.whereami.gis
 
-import com.tracker.TrackerProtocol.{ Point, Meters, Tags }
+import com.github.bhanafee.whereami.TrackerProtocol.{ Point, Meters, Tags }
 
 import scala.slick.driver.PostgresDriver.simple._
 import scala.slick.jdbc.StaticQuery.interpolation
