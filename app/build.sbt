@@ -1,6 +1,3 @@
-import AssemblyKeys._
-import com.typesafe.sbt.SbtStartScript
-
 name := "tracker"
 
 version := "0.1-SNAPSHOT"
@@ -32,10 +29,3 @@ libraryDependencies ++= {
 
 // Assembly settings
 mainClass in Global := Some("com.github.bhanafee.whereami.Main")
-
-jarName in assembly := "tracker-server.jar"
-
-assemblySettings
-
-// StartScript settings
-seq(SbtStartScript.startScriptForClassesSettings: _*)
