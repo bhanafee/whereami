@@ -9,10 +9,7 @@ organization := "com.github.bhanafee.whereami"
 
 scalaVersion := "2.11.2"
 
-resolvers ++= Seq("Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
-                  "Sonatype snapshots"  at "http://oss.sonatype.org/content/repositories/snapshots/",
-                  "Spray Repository"    at "http://repo.spray.io",
-                  "Spray Nightlies"     at "http://nightlies.spray.io/")
+resolvers ++= Seq("Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/")
 
 libraryDependencies ++= {
   val akkaVersion       = "2.3.6"
