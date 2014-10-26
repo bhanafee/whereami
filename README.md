@@ -14,8 +14,7 @@ API
       <th>Description</th>
       <th>Method</th>
       <th>Path</th>
-      <th>Request Example</th>
-      <th>Response Example</th>
+      <th>Response</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +22,6 @@ API
       <td>Get the area tags for a location</td>
       <td>GET</td>
       <td>/tags?latitude=38.0&longitude=122.0</td>
-      <td></td>
       <td>
 <pre>{
     "location": {
@@ -38,7 +36,6 @@ API
       <td>Get the distance from a point to the nearest area boundary</td>
       <td>GET</td>
       <td>/nearest?latitude=38.0&longitude=122.0</td>
-      <td></td>
       <td>
 <pre>{
     "location": {
@@ -56,8 +53,8 @@ API
     <tr>
       <td>Report a location and time, receiving a fence for the next report</td>
       <td>POST</td>
-      <td>/track/:id</td>
-      <td>
+      <td>/track/:id
+      <br/>
 <pre>{
     "location": {
        "latitude": 38.0,
@@ -82,7 +79,6 @@ API
       <td>Report a location, defaulting to the current time and receiving a fence for the next report</td>
       <td>GET</td>
       <td>/track/:id?latitude=38.0&longitude=122.0</td>
-      <td></td>
       <td>
 <pre>{
     "circle": {
@@ -99,7 +95,6 @@ API
       <td>Report that a device remains within a previously defined fence</td>
       <td>GET</td>
       <td>/track/:id/checkin</td>
-      <td></td>
       <td></td>
     </tr>
   </tbody>
