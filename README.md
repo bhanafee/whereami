@@ -22,7 +22,7 @@ API
       <td>Get the area tags for a location</td>
       <td>GET</td>
       <td>/tags?latitude=38.0&longitude=122.0</td>
-      <td>
+      <td>200 OK
 <pre>{
     "location": {
         "latitude": 38.0,
@@ -36,7 +36,7 @@ API
       <td>Get the distance from a point to the nearest area boundary</td>
       <td>GET</td>
       <td>/nearest?latitude=38.0&longitude=122.0</td>
-      <td>
+      <td>200 OK
 <pre>{
     "location": {
         "latitude": 38.0,
@@ -63,7 +63,7 @@ API
     "time": "2014-10-02T05:30:45.123Z"
 }</pre>
       </td>
-      <td>
+      <td>200 OK
 <pre>{
     "circle": {
         "center": {
@@ -79,7 +79,7 @@ API
       <td>Report a location, defaulting to the current time and receiving a fence for the next report</td>
       <td>GET</td>
       <td>/track/:id?latitude=38.0&longitude=122.0</td>
-      <td>
+      <td>200 OK
 <pre>{
     "circle": {
         "center": {
@@ -95,7 +95,7 @@ API
       <td>Report that a device remains within a previously defined fence</td>
       <td>GET</td>
       <td>/track/:id/checkin</td>
-      <td></td>
+      <td>200 OK</td>
     </tr>
   </tbody>
 </table>
