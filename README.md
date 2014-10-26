@@ -13,7 +13,7 @@ API
     <tr>
       <th>Description</th>
       <th>Method</th>
-      <th>Path</th>
+      <th>Request</th>
       <th>Response</th>
     </tr>
   </thead>
