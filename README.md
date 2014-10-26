@@ -22,7 +22,7 @@ API
       <td>Get the area tags for a location</td>
       <td>GET</td>
       <td>/tags?latitude=38.0&longitude=122.0</td>
-      <td>
+      <td>200 OK
 <pre>{
     "location": {
         "latitude": 38.0,
