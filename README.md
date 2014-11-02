@@ -12,7 +12,6 @@ API
   <thead>
     <tr>
       <th>Description</th>
-      <th>Method</th>
       <th>Request</th>
       <th>Response</th>
     </tr>
@@ -20,8 +19,7 @@ API
   <tbody>
     <tr>
       <td>Get the area tags for a location</td>
-      <td>GET</td>
-      <td>/tags?latitude=38.0&longitude=122.0</td>
+      <td>GET<br/>/tags?latitude=38.0&longitude=-122.0</td>
       <td>200 OK
 <pre>{
     "location": {
@@ -34,13 +32,12 @@ API
     </tr>
     <tr>
       <td>Get the distance from a point to the nearest area boundary</td>
-      <td>GET</td>
-      <td>/nearest?latitude=38.0&longitude=122.0</td>
+      <td>GET<br/>/nearest?latitude=38.0&longitude=-122.0</td>
       <td>200 OK
 <pre>{
     "location": {
         "latitude": 38.0,
-        "longitude": 132.0
+        "longitude": -122.0
     }
     "tags": [
         "CA",
@@ -52,13 +49,11 @@ API
     </tr>
     <tr>
       <td>Report a location and time, receiving a fence for the next report</td>
-      <td>POST</td>
-      <td>/track/:id
-      <br/>
+      <td>POST<br/>/track/:id<br/>
 <pre>{
     "location": {
        "latitude": 38.0,
-       "longitude": 122.0
+       "longitude": -122.0
     },
     "time": "2014-10-02T05:30:45.123Z"
 }</pre>
@@ -68,7 +63,7 @@ API
     "circle": {
         "center": {
             "latitude": 38.0,
-            "longitude": 122.0
+            "longitude": -122.0
         },
         "radius": 7400.0
     },
@@ -77,14 +72,13 @@ API
     </tr>
     <tr>
       <td>Report a location, defaulting to the current time and receiving a fence for the next report</td>
-      <td>GET</td>
-      <td>/track/:id?latitude=38.0&longitude=122.0</td>
+      <td>GET<br/>/track/:id?latitude=38.0&longitude=-122.0</td>
       <td>200 OK
 <pre>{
     "circle": {
         "center": {
             "latitude": 38.0,
-            "longitude": 122.0
+            "longitude": -122.0
         },
         "radius": 7400.0
     },
@@ -93,8 +87,7 @@ API
     </tr>
     <tr>
       <td>Report that a device remains within a previously defined fence</td>
-      <td>GET</td>
-      <td>/track/:id/checkin</td>
+      <td>GET<br/>/track/:id/checkin</td>
       <td>200 OK</td>
     </tr>
   </tbody>
