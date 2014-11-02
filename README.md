@@ -93,3 +93,13 @@ API
   </tbody>
 </table>
 
+Resources
+===
+
+* [Scala](http://www.scala-lang.org/)
+* [Akka](http://akka.io)
+* [Spray](http://spray.io)
+* [Slick](http://slick.typesafe.com)
+* [Camel](http://camel.apache.org)
+* [PostGIS](http:postgis.net)
+* [Oracle Locator](http://www.oracle.com/technetwork/database/enterprise-edition/10g-spatial-locator-ds-092286.html)
