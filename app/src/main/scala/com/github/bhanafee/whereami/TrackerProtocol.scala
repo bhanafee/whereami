@@ -9,7 +9,6 @@ object TrackerProtocol {
   // Primitives
 
   type Timestamp = DateTime
-  type Meters = Double
   type Degrees = Double
 
   type Tags = Seq[String]
@@ -19,18 +18,12 @@ object TrackerProtocol {
     def close(other: Point) = (latitude - other.latitude).abs + (longitude - other.longitude).abs < 0.05
   }
   case class Position(location: Point, time: Timestamp)
-  case class Circle(center: Point, radius: Meters)
 
   // Messages
   case class Tag(location: Point)
   case class Tagged(location: Point, tags: Tags)
 
-  case class FindNearest(location: Point)
-  case class Nearest(location: Point, distance: Meters)
-
   case class Report(id: DeviceId, position: Position)
-  case class Checkin(id: DeviceId, time: Timestamp)
-  case class Boundary(area: Circle, time: Timestamp)
   case class Entry(id: DeviceId, time: Timestamp, location: Option[Point], tags: Tags)
 
   // JSON
@@ -49,20 +42,8 @@ object TrackerProtocol {
     implicit val format = jsonFormat2(Position.apply)
   }
 
-  object Circle extends DefaultJsonProtocol {
-    implicit val format = jsonFormat2(Circle.apply)
-  }
-
   object Tagged extends DefaultJsonProtocol {
     implicit val format = jsonFormat2(Tagged.apply)
-  }
-
-  object Nearest extends DefaultJsonProtocol {
-    implicit val format = jsonFormat2(Nearest.apply)
-  }
-
-  object Boundary extends DefaultJsonProtocol {
-    implicit val format = jsonFormat2(Boundary.apply)
   }
 
 }

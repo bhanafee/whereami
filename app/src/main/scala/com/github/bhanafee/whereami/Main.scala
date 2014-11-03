@@ -26,19 +26,8 @@ object Main extends App {
 
   val gis = system.actorOf(Props(classOf[PostGIS], connect), "gis")
   val recorder = system.actorOf(Props(classOf[Recorder], recording), "recorder")
-  val tracker = system.actorOf(Props(classOf[Tracker], recorder, gis, createFencer), "tracker")
+  val tracker = system.actorOf(Props(classOf[Tracker], recorder, gis), "tracker")
   val api = system.actorOf(Props(classOf[RestInterface], gis, tracker, apiTimeout), "httpInterface")
   IO(Http) ! Http.Bind(listener = api, interface = host, port = port)
   CamelExtension(system).context.addRoutes(new RecordingRoutes(recording))
-
-
-  def createFencer = new Fencer {
-    import org.joda.time.ReadablePeriod
-    import TrackerProtocol.Meters
-
-    val lifetime: ReadablePeriod = org.joda.time.Hours.hours(config.getInt("tracker.fence.lifetime"))
-    val minRadius: Meters = config.getInt("tracker.fence.radius.min")
-    val maxRadius: Meters = config.getInt("tracker.fence.radius.max")
-    val defaultRadius: Meters = config.getInt("tracker.fence.radius.default")
-  }
 }

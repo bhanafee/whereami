@@ -3,7 +3,6 @@ package com.github.bhanafee.whereami
 import scala.concurrent.duration._
 
 import akka.actor._
-import akka.pattern.ask
 
 import spray.routing._
 import spray.http.StatusCodes
@@ -32,18 +31,8 @@ trait RestApi extends HttpService with ActorLogging { actor: Actor =>
     (path("tags") & getLatLon) { (lat, lon) => ctx =>
       gis.tell(Tag(Point(lat, lon)), responder(ctx))
     } ~
-    (path("nearest") & getLatLon) { (lat, lon) => ctx =>
-      gis.tell(FindNearest(Point(lat, lon)), responder(ctx))
-    } ~
-    (path("track" / PathElement / "checkin") & get) { (device) => ctx =>
-      tracker ! Checkin(device, new Timestamp())
-      ctx.complete(StatusCodes.OK)
-    }~
-    (path("track" / PathElement) & getLatLon) { (device, lat, lon) => ctx =>
-      tracker.tell(Report(device, Position(Point(lat, lon), new Timestamp())), responder(ctx))
-    } ~
-    (path("track" / PathElement) & entity(as[Position])) { (device: DeviceId, position: Position) => ctx =>
-      tracker.tell(Report(device, position), responder(ctx))
+    (path("checkin" / PathElement) & entity(as[Point])) { (device: DeviceId, point: Point) => ctx =>
+      tracker.tell(Report(device, Position(point, new Timestamp())), responder(ctx))
     }
 
 }
@@ -54,14 +43,6 @@ class Responder(requestContext: RequestContext, apiTimeout: Duration) extends Ac
   def receive = {
     case tags: Tagged =>
       requestContext.complete(StatusCodes.OK, tags)
-      self ! PoisonPill
-
-    case nearest: Nearest =>
-      requestContext.complete(StatusCodes.OK, nearest)
-      self ! PoisonPill
-
-    case boundary: Boundary =>
-      requestContext.complete(StatusCodes.OK, boundary)
       self ! PoisonPill
 
     case ReceiveTimeout =>
