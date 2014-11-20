@@ -53,11 +53,7 @@ trait Fencer {
   val defaultRadius: Meters
 
   def bound(time: Timestamp, location: Point, nearest: Option[Meters]): Boundary = {
-    val radius = nearest.getOrElse(defaultRadius) match {
-      case x if x < minRadius => minRadius
-      case x if x > maxRadius => maxRadius
-      case x => x    
-    }
+    val radius = nearest.getOrElse(defaultRadius).max(minRadius).min(maxRadius)
     val until = time.plus(lifetime)
     Boundary(Circle(location, radius), until)
   }
