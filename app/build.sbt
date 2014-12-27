@@ -4,12 +4,12 @@ version := "0.1-SNAPSHOT"
 
 organization := "com.github.bhanafee.whereami"
 
-scalaVersion := "2.11.2"
+scalaVersion := "2.11.4"
 
 resolvers ++= Seq("Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/")
 
 libraryDependencies ++= {
-  val akkaVersion       = "2.3.6"
+  val akkaVersion       = "2.3.8"
   val sprayVersion      = "1.3.2"
   Seq(
     "com.typesafe.akka"  %% "akka-actor"      % akkaVersion,
@@ -18,8 +18,8 @@ libraryDependencies ++= {
     "com.typesafe.slick" %% "slick"           % "2.1.0",
     "io.spray"           %% "spray-can"       % sprayVersion,
     "io.spray"           %% "spray-routing"   % sprayVersion,
-    "io.spray"           %% "spray-json"      % "1.3.0",
-    "joda-time"          %  "joda-time"       % "2.5",
+    "io.spray"           %% "spray-json"      % "1.3.1",
+    "joda-time"          %  "joda-time"       % "2.6",
     "org.postgresql"     %  "postgresql"      % "9.3-1102-jdbc4",
     "ch.qos.logback"     %  "logback-classic" % "1.1.2",
     "com.typesafe.akka"  %% "akka-testkit"    % akkaVersion   % "test",
