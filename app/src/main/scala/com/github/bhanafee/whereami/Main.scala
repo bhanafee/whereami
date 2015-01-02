@@ -25,7 +25,7 @@ object Main extends App {
 
   implicit val system = ActorSystem("geotracker")
 
-  val gis = system.actorOf(Props(classOf[PostGIS], connect).withRouter(FromConfig()), "gis")
+  val gis = system.actorOf(Props(classOf[Stub]).withRouter(FromConfig()), "gis")
   val recorder = system.actorOf(Props(classOf[Recorder], recording), "recorder")
   val tracker = system.actorOf(Props(classOf[Tracker], recorder, gis, createFencer), "tracker")
   val api = system.actorOf(Props(classOf[RestInterface], gis, tracker, apiTimeout), "httpInterface")
