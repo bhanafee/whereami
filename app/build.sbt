@@ -1,4 +1,8 @@
+import NativePackagerKeys._
+
 name := "tracker"
+
+packageArchetype.java_application
 
 version := "0.1-SNAPSHOT"
 
@@ -29,3 +33,10 @@ libraryDependencies ++= {
 
 // Assembly settings
 mainClass in Global := Some("com.github.bhanafee.whereami.Main")
+
+// Docker settings
+dockerBaseImage in Docker := "dockerfile/java:oracle-java8"
+
+maintainer in Docker := "Brian Hanafee <bhanafee@gmail.com>"
+
+dockerExposedPorts in Docker := Seq(5000)
