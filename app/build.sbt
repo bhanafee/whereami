@@ -1,6 +1,6 @@
 import NativePackagerKeys._
 
-name := "tracker"
+name := "whereami"
 
 packageArchetype.java_application
 
@@ -37,6 +37,8 @@ mainClass in Global := Some("com.github.bhanafee.whereami.Main")
 // Docker settings
 dockerBaseImage in Docker := "dockerfile/java:oracle-java8"
 
+dockerRepository := Some("bhanafee")
+
 maintainer in Docker := "Brian Hanafee <bhanafee@gmail.com>"
 
-dockerExposedPorts in Docker := Seq(5000)
+dockerExposedPorts in Docker := Seq(80)
