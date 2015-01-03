@@ -41,4 +41,4 @@ dockerRepository := Some("bhanafee")
 
 maintainer in Docker := "Brian Hanafee <bhanafee@gmail.com>"
 
-dockerExposedPorts in Docker := Seq(80)
+dockerExposedPorts in Docker := Seq(8080)
