@@ -26,7 +26,11 @@ API
         "latitude": 38.0,
         "longitude": 132.0
     }
-    "distance": 1000.0,
+    "tags": [
+        "CA",
+        "San Francisco",
+        "94123"
+    ]
 }</pre>
       </td>
     </tr>
@@ -39,11 +43,7 @@ API
         "latitude": 38.0,
         "longitude": -122.0
     }
-    "tags": [
-        "CA",
-        "San Francisco",
-        "94123"
-    ]
+    "distance": 1000.0,
 }</pre>
       </td>
     </tr>
